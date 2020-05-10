@@ -8,9 +8,11 @@ namespace L1.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+    
+        public ActionResult Index(string usr, string pwd, string rme)
         {
-            return View();
+            // Aquí cualquier uso de las variables 'usr', 'pwd' y 'rme'
+            return View("Index");
         }
 
         public ActionResult About()

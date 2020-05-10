@@ -2,7 +2,27 @@
     ViewBag.Title = "Home Page";
 }
 
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
 
 <div class="row">
-   Hola Enrique
+    <div class="col-md-3 form-horizontal">
+        <form action="/Home/Index" method="post">
+            <br />
+            <input type="text" class="form-control" name="usr" placeholder="Usuario" required autofocus>
+            <br />
+            <input type="password" class="form-control" name="pwd" placeholder="Contraseña" required>
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Iniciar sesión
+            </button>
+            <label class="checkbox pull-right">
+                <input type="checkbox" name="rme">
+                <label>Recordarme</label>
+            </label>
+        </form>
+    </div>
 </div>
