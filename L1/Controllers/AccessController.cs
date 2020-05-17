@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using L1.Models;
+
 namespace L1.Controllers
 {
     public class AccessController : Controller
@@ -26,7 +27,8 @@ namespace L1.Controllers
                               select d;
                         if (lst.Count() > 0)
                         {
-                            Session["User"] = lst.First();
+                            curUser oUser = lst.First();
+                            Session["User"] = oUser;
                             return Content("1");
                         }
                         else
