@@ -18,6 +18,12 @@ namespace L1
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+           
+            routes.MapRoute(
+                "Acceso",                                           // Route name
+                url: "{controller}/{action}/{id}",                          // URL with parameters
+                new { controller = "Acceso", action = "Index" }  // Parameter defaults
+            );
         }
     }
 }

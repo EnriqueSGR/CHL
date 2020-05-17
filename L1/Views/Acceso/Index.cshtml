@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="row">
+    <div class="col-md-3 form-horizontal">
+        <form action="/Home/Index" method="post">
+            <br />
+            <input type="text" class="form-control" name="usr" placeholder="Usuario" required autofocus>
+            <br />
+            <input type="password" class="form-control" name="pwd" placeholder="Contraseña" required>
+            <br />
+            <button class="btn btn-primary" type="submit">
+                Iniciar sesión
+            </button>
+            <label class="checkbox pull-right">
+                <input type="checkbox" name="rme">
+                <label>Recordarme</label>
+            </label>
+        </form>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+    $(document).ready(function () {
+
+            $("#frm").submit(function (e){
+                e.preventDefault();
+                url = "@Url.Content("~/Acceso/Enter")"
+                parametros = $(this).serialize();
+
+                $.post(url, parametros, function () {
+
+                    if (Data == "1") {
+                        document.location.href = "@Url.Content("~/")";
+                    }
+
+                })
+            })
+    })
+
+    </script>
+}

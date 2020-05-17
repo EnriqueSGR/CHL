@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Amazon.IdentityManagement.Model;
+using L1.Models;
 
 namespace L1.Controllers
 {
     public class HomeController : Controller
     {
     
-        public ActionResult Index(string usr, string pwd, string rme)
+        public ActionResult Index()
         {
-            // Aquí cualquier uso de las variables 'usr', 'pwd' y 'rme'
+           
             return View("Index");
         }
 

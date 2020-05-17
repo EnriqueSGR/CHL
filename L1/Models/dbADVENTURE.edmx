@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdventureWorks2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="curCstate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="curUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="idstate" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_curUser_curCstate">
+          <End Role="curCstate" Type="Self.curCstate" Multiplicity="1" />
+          <End Role="curUser" Type="Self.curUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curCstate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curUser">
+              <PropertyRef Name="idstate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_curUser_curUser">
+          <End Role="curUser" Type="Self.curUser" Multiplicity="1" />
+          <End Role="curUser1" Type="Self.curUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="curUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curUser1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdventureWorks2017ModelStoreContainer">
+          <EntitySet Name="curCstate" EntityType="Self.curCstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="curUser" EntityType="Self.curUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_curUser_curCstate" Association="Self.FK_curUser_curCstate">
+            <End Role="curCstate" EntitySet="curCstate" />
+            <End Role="curUser" EntitySet="curUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_curUser_curUser" Association="Self.FK_curUser_curUser">
+            <End Role="curUser" EntitySet="curUser" />
+            <End Role="curUser1" EntitySet="curUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdventureWorks2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AdventureWorks2017Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="curCstate" EntityType="AdventureWorks2017Model.curCstate" />
+          <EntitySet Name="curUser" EntityType="AdventureWorks2017Model.curUser" />
+          <AssociationSet Name="FK_curUser_curCstate" Association="AdventureWorks2017Model.FK_curUser_curCstate">
+            <End Role="curCstate" EntitySet="curCstate" />
+            <End Role="curUser" EntitySet="curUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_curUser_curUser" Association="AdventureWorks2017Model.FK_curUser_curUser">
+            <End Role="curUser" EntitySet="curUser" />
+            <End Role="curUser1" EntitySet="curUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="curCstate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="curUser" Relationship="AdventureWorks2017Model.FK_curUser_curCstate" FromRole="curCstate" ToRole="curUser" />
+        </EntityType>
+        <EntityType Name="curUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idstate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="curCstate" Relationship="AdventureWorks2017Model.FK_curUser_curCstate" FromRole="curUser" ToRole="curCstate" />
+          <NavigationProperty Name="curUser1" Relationship="AdventureWorks2017Model.FK_curUser_curUser" FromRole="curUser" ToRole="curUser1" />
+          <NavigationProperty Name="curUser2" Relationship="AdventureWorks2017Model.FK_curUser_curUser" FromRole="curUser1" ToRole="curUser" />
+        </EntityType>
+        <Association Name="FK_curUser_curCstate">
+          <End Type="AdventureWorks2017Model.curCstate" Role="curCstate" Multiplicity="1" />
+          <End Type="AdventureWorks2017Model.curUser" Role="curUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curCstate">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curUser">
+              <PropertyRef Name="idstate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_curUser_curUser">
+          <End Type="AdventureWorks2017Model.curUser" Role="curUser" Multiplicity="1" />
+          <End Type="AdventureWorks2017Model.curUser" Role="curUser1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="curUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="curUser1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdventureWorks2017ModelStoreContainer" CdmEntityContainer="AdventureWorks2017Entities">
+          <EntitySetMapping Name="curCstate">
+            <EntityTypeMapping TypeName="AdventureWorks2017Model.curCstate">
+              <MappingFragment StoreEntitySet="curCstate">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curUser">
+            <EntityTypeMapping TypeName="AdventureWorks2017Model.curUser">
+              <MappingFragment StoreEntitySet="curUser">
+                <ScalarProperty Name="idstate" ColumnName="idstate" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

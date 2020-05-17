@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="942b83807fae4c22899d16c30f670851" Name="Diagram1">
+        <EntityTypeShape EntityType="AdventureWorks2017Model.curCstate" Width="1.5" PointX="2.875" PointY="1.5" />
+        <EntityTypeShape EntityType="AdventureWorks2017Model.curUser" Width="1.5" PointX="5.125" PointY="1.125" />
+        <AssociationConnector Association="AdventureWorks2017Model.FK_curUser_curCstate" />
+        <AssociationConnector Association="AdventureWorks2017Model.FK_curUser_curUser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
