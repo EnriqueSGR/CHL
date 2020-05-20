@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="942b83807fae4c22899d16c30f670851" Name="Diagram1">
         <EntityTypeShape EntityType="AdventureWorks2017Model.curCstate" Width="1.5" PointX="2.875" PointY="1.5" />
-        <EntityTypeShape EntityType="AdventureWorks2017Model.curUser" Width="1.5" PointX="5.125" PointY="1.125" />
+        <EntityTypeShape EntityType="AdventureWorks2017Model.curUser" Width="1.5" PointX="5.125" PointY="1" />
         <AssociationConnector Association="AdventureWorks2017Model.FK_curUser_curCstate" />
         <AssociationConnector Association="AdventureWorks2017Model.FK_curUser_curUser" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

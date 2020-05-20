@@ -18,6 +18,7 @@ namespace L1.Models
         public string email { get; set; }
         public string password { get; set; }
         public int idstate { get; set; }
+        public Nullable<int> edad { get; set; }
     
         public virtual curCstate curCstate { get; set; }
         public virtual curUser curUser1 { get; set; }

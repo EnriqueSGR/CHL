@@ -20,6 +20,7 @@
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="100" />
           <Property Name="idstate" Type="int" Nullable="false" />
+          <Property Name="edad" Type="int" />
         </EntityType>
         <Association Name="FK_curUser_curCstate">
           <End Role="curCstate" Type="Self.curCstate" Multiplicity="1" />
@@ -89,6 +90,7 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="idstate" Type="Int32" Nullable="false" />
+          <Property Name="edad" Type="Int32" />
           <NavigationProperty Name="curCstate" Relationship="AdventureWorks2017Model.FK_curUser_curCstate" FromRole="curUser" ToRole="curCstate" />
           <NavigationProperty Name="curUser1" Relationship="AdventureWorks2017Model.FK_curUser_curUser" FromRole="curUser" ToRole="curUser1" />
           <NavigationProperty Name="curUser2" Relationship="AdventureWorks2017Model.FK_curUser_curUser" FromRole="curUser1" ToRole="curUser" />
@@ -134,6 +136,7 @@
           <EntitySetMapping Name="curUser">
             <EntityTypeMapping TypeName="AdventureWorks2017Model.curUser">
               <MappingFragment StoreEntitySet="curUser">
+                <ScalarProperty Name="edad" ColumnName="edad" />
                 <ScalarProperty Name="idstate" ColumnName="idstate" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
