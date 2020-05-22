@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using L1.Models;
 using L1.Models.TableViewModels;
+using L1.Models.ViewModels;
 
 namespace L1.Controllers
 {
@@ -29,5 +30,41 @@ namespace L1.Controllers
 
             return View(lst);
         }
+
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(UserViewModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            using (var db = new AdventureWorks2017Entities())
+            {
+                curUser oUser = new curUser();
+                oUser.idstate = 1;
+                oUser.email = model.Email;
+                oUser.edad = model.Edad;
+                oUser.password = model.Password;
+
+                db.curUser.Add(oUser);
+
+                db.SaveChanges();
+
+            }
+
+            return Redirect(Url.Content("~/User/"));
+        }
+    
     }
+
 }

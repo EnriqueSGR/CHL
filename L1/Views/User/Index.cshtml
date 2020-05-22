@@ -4,7 +4,13 @@
     ViewBag.Title = "Index";
 }
 
+
 <h2>Usuarios</h2>
+<div class="row">
+    <div class="col-md-12">
+        <input type="button" class="btn btn-primary" onclick="document.location.href='@Url.Content("~/User/Add")'" value="Nuevo" />
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-12">
@@ -22,7 +28,7 @@
                     <td>@oElemento.id</td>
                     <td>@oElemento.email</td>
                     <td>@oElemento.edad</td>
-                    
+
                 </tr>
             }
         </table>
