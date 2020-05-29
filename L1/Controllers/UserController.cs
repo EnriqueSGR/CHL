@@ -64,7 +64,52 @@ namespace L1.Controllers
 
             return Redirect(Url.Content("~/User/"));
         }
-    
-    }
 
+
+        public ActionResult Edit(int Id)
+        {
+            EditUserViewModel model = new EditUserViewModel();
+
+            using (var db = new AdventureWorks2017Entities())
+            {
+                var oUser = db.curUser.Find(Id);
+                model.Edad = (int)oUser.edad;
+                model.Email = oUser.email;
+                model.Id = oUser.ID;
+
+            }
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            using (var db = new AdventureWorks2017Entities())
+            {
+                
+                var oUser = db.curUser.Find(model.Id);
+                oUser.email = model.Email;
+                oUser.edad = model.Edad;
+
+                if (model.Password != null && model.Password.Trim() != "")
+                {
+                    oUser.password = model.Password;
+                }
+
+                db.Entry(oUser).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+
+
+            return Redirect(Url.Content("~/User/"));
+        }
+    }
 }
