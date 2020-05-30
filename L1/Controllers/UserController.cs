@@ -111,5 +111,21 @@ namespace L1.Controllers
 
             return Redirect(Url.Content("~/User/"));
         }
+
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            using (var db = new AdventureWorks2017Entities())
+            {
+                var oUser = db.curUser.Find(Id);
+                oUser.idstate = 3; //eliminaremos
+
+                db.Entry(oUser).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+            }
+
+            return Content("1");
+        }
     }
 }
